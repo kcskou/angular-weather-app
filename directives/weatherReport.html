@@ -7,11 +7,11 @@
     <div class="panel-body">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <img ng-src="http://openweathermap.org/img/w/{{ weatherDay.weather[0].icon }}.png" />
                     <p class="text-capitalize lead"><strong>{{ weatherDay.weather[0].description }}</strong></p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <ul class="list-unstyled">
                         <li>Average: {{ convertTemp({ degK: weatherDay.temp.day }) | number:1 }} °C</li>
                         <li>Morning: {{ convertTemp({ degK: weatherDay.temp.morn }) | number:1 }} °C</li>
@@ -19,7 +19,7 @@
                         <li>Night: {{ convertTemp({ degK: weatherDay.temp.night }) | number:1 }} °C</li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-xs-4">
                     <ul class="list-unstyled">
                         <li ng-if="isDefined({ var: weatherDay.speed }) && isDefined({ var: weatherDay.deg })">
                             Wind: {{ weatherDay.speed | number:0 }} m/s, {{ weatherDay.deg | number:0 }}°
