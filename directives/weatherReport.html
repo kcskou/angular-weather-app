@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{ convertDate({ dt: weatherDay.dt }) | date: dateFormat }}
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <img ng-src="http://openweathermap.org/img/w/{{ weatherDay.weather[0].icon }}.png" />
+                    <p class="text-capitalize lead"><strong>{{ weatherDay.weather[0].description }}</strong></p>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-unstyled">
+                        <li>Average: {{ convertTemp({ degK: weatherDay.temp.day }) | number:1 }} °C</li>
+                        <li>Morning: {{ convertTemp({ degK: weatherDay.temp.morn }) | number:1 }} °C</li>
+                        <li>Evening: {{ convertTemp({ degK: weatherDay.temp.eve }) | number:1 }} °C</li>
+                        <li>Night: {{ convertTemp({ degK: weatherDay.temp.night }) | number:1 }} °C</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-unstyled">
+                        <li ng-if="isDefined({ var: weatherDay.speed }) && isDefined({ var: weatherDay.deg })">
+                            Wind: {{ weatherDay.speed | number:0 }} m/s, {{ weatherDay.deg | number:0 }}°
+                        </li>
+                        <li ng-if="isDefined({ var: weatherDay.clouds })">
+                            Cloud: {{ weatherDay.clouds | number:0 }} %
+                        </li>
+                        <li ng-if="isDefined({ var: weatherDay.rain })">
+                            Rain: {{ weatherDay.rain | number:1 }} mm
+                        </li>
+                        <li ng-if="isDefined({ var: weatherDay.snow })">
+                            Snow: {{ weatherDay.snow | number:1 }} mm
+                        </li>
+                        <li ng-if="isDefined({ var: weatherDay.pressure })">
+                            Pressure: {{ weatherDay.pressure | number:0 }} hPa
+                        </li>                        
+                        <li ng-if="isDefined({ var: weatherDay.humidity })">
+                            Humidity: {{ weatherDay.humidity | number:0 }} %
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
